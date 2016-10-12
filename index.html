@@ -42,15 +42,15 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Subsection<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#G.C3.A9n.C3.A9ration_de_terrain">The terrain</a></li>
+                            <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#Gestion_du_comportement_des_animaux">The animals</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="contact.html">Contact</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">The details<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="terrain.html">The terrain</a></li>
-                            <li><a href="animals.html">The animals</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -74,10 +74,21 @@
 
     <!-- Page Content -->
     <div class="container">
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> This website is under development. The english version will be coming soon.
+        </div>
+        <hr>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-8">
                 <h2>The project</h2>
-                <p>As you can see, the page is currently under development. You can check out the <a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me">french web page in our school wiki</a> if you are in a rush to understand what this project is all about.</p>
+                <p>This project is a end school project for the second year in Ensimag (Grenoble, France). Our team (presented below) choosed to tackle the problem of procedural generation and the swarm simulation. Our goal was to have a programm coded in C++/OpenGL able to generate a realistic island with animals living on it.</p>
+            </div>
+            <div class="col-sm-4">
+                <h2>Useful links</h2>
+                <ul>
+                    <li><a href="https://github.com/Shutter-Island-Team/Shutter-island">Github link</a></li>
+                    <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me">Original Presentation on the french wiki of the school</a></li>
+                </ul>
             </div>
         </div>
         <!-- /.row -->
@@ -87,7 +98,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2>Shaping the world</h2>
-                <p>For each of the programm, a new island is procedurally generate. </p>
+                <p>For each instance of the programm, a new island is procedurally generate. The generation is processed in several steps : geometry, geography then height map. The rendering of the island uses also several technics : tesselation, texturing, water handeling, ...</p>
+                <p>
+                    <img src="ressources/images/Shutter_Island_Primal_map.png" style="height: 400px" class="img-responsive center-block">
+                </p>
+                <p>
+                    <a class="btn btn-default btn-lg" href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#G.C3.A9n.C3.A9ration_de_terrain">Learn more »</a>
+                </p>
             </div>
         </div>
         <!-- /.row -->
@@ -98,9 +115,11 @@
             <div class="col-sm-12">
                 <h2>Bringing life to the world</h2>
                 <p>The island contains different type of species living, interacting, being born and dying. The boid logic combined with a graph deciding the state of the animal has been adopted for this project.</p>
-                <canvas class="center-block" data-processing-sources="ressources/processing_files/flock.pde"></canvas>
+                <canvas class="img-responsive center-block" data-processing-sources="ressources/processing_files/flock.pde"></canvas>
                 <p class="text-center"><em>The boids here have the flocking behavior. It is currently running in real time on your machine!</em></p>
-                <p><a href="animals.html">Learn more...</a></p>
+                <p>
+                    <a class="btn btn-default btn-lg" href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#Gestion_du_comportement_des_animaux">Learn more »</a>
+                </p>
 
             </div>
         </div>
@@ -117,17 +136,17 @@
             <div class="col-sm-3">
                 <img class="img-circle img-responsive img-center" src="ressources/images/KACHER_Ilyes.png" alt="">
                 <h3>KACHER Ilyes</h3>
-                <p>Additional info</p>
+                <p><a href="https://github.com/IlyesKacher">Github</a></p>
             </div>
             <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/LY_Mickael.png" alt="">
+                <img class="img-circle img-responsive img-center" src="ressources/images/LY_Mickael.JPG" alt="">
                 <h3>LY Mickaël</h3>
-                <p>Additional info</p>
+                <p><a href="https://github.com/astcort">Github</a></p>
             </div>
             <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/STOFFEL_Mathieu.png" alt="">
+                <img class="img-circle img-responsive img-center" src="ressources/images/STOFFEL_Mathieu.jpg" alt="">
                 <h3>STOFFEL Mathieu</h3>
-                <p>Additional info</p>
+                <p><a href="https://github.com/matsKNY">Github</a></p>
             </div>
         </div>
         <!-- /.row -->
@@ -138,14 +157,14 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/DELAME_Thomas.png" alt="">
+                <img class="img-circle img-responsive img-center" src="ressources/images/DELAME_Thomas.jpg" alt="">
                 <h3>DELAME Thomas</h3>
                 <p><a href="http://virtual-atom.com/">Website</a></p>
             </div>
             <div class="col-sm-2">
             </div>
             <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/MANTEAUX_Pierre_Luc.png" alt="">
+                <img class="img-circle img-responsive img-center" src="ressources/images/MANTEAUX_Pierre_Luc.jpg" alt="">
                 <h3>MANTEAUX Pierre-Luc</h3>
                 <p><a href="http://manteapi.github.io/">Website</a></p>
             </div>
