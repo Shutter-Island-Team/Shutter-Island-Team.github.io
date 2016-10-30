@@ -20,195 +20,194 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Shutter-Island</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Subsection<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#G.C3.A9n.C3.A9ration_de_terrain">The terrain</a></li>
-                            <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#Gestion_du_comportement_des_animaux">The animals</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Image Background Page Header -->
-    <!-- Note: The background image is set within the business-casual.css file. -->
-    <header class="business-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="tagline">Shutter Island</h1>
-                    <h3 class="tagline">The procedural island generator with boids</h3>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Page Content -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-        <div class="alert alert-warning">
-            <strong>Warning!</strong> This website is under development. The english version will be coming soon.
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Shutter-Island</a>
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-8">
-                <h2>The project</h2>
-                <p>This project is a end school project for the second year in Ensimag (Grenoble, France). Our team (presented below) choosed to tackle the problem of procedural generation and the swarm simulation. Our goal was to have a programm coded in C++/OpenGL able to generate a realistic island with animals living on it.</p>
-            </div>
-            <div class="col-sm-4">
-                <h2>Useful links</h2>
-                <ul>
-                    <li><a href="https://github.com/Shutter-Island-Team/Shutter-island">Github link</a></li>
-                    <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me">Original Presentation on the french wiki of the school</a></li>
-                </ul>
-            </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project description<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="terrain.html">Terrain generation</a></li>
+                        <li><a href="animals.html">Animals behaviour</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://github.com/Shutter-Island-Team/Shutter-island">Github Page</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
         </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Shaping the world</h2>
-                <p>For each instance of the programm, a new island is procedurally generate. The generation is processed in several steps : geometry, geography then height map. The rendering of the island uses also several technics : tesselation, texturing, water handeling, ...</p>
-                <p>
-                    <img src="ressources/images/Shutter_Island_Primal_map.png" style="height: 400px" class="img-responsive center-block">
-                </p>
-                <p>
-                    <a class="btn btn-default btn-lg" href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#G.C3.A9n.C3.A9ration_de_terrain">Learn more »</a>
-                </p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Bringing life to the world</h2>
-                <p>The island contains different type of species living, interacting, being born and dying. The boid logic combined with a graph deciding the state of the animal has been adopted for this project.</p>
-                <canvas class="img-responsive center-block" data-processing-sources="ressources/processing_files/flock.pde"></canvas>
-                <p class="text-center"><em>The boids here have the flocking behavior. It is currently running in real time on your machine!</em></p>
-                <p>
-                    <a class="btn btn-default btn-lg" href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#Gestion_du_comportement_des_animaux">Learn more »</a>
-                </p>
-
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-        <h2>The team</h2>
-        <div class="row team">
-            <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/HAMMEN_Maxence.png" alt="">
-                <h3>HAMMEN Maxence</h3>
-                <p><a href="https://github.com/hammenm/">Github</a></p>
-            </div>
-            <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/KACHER_Ilyes.png" alt="">
-                <h3>KACHER Ilyes</h3>
-                <p><a href="https://github.com/IlyesKacher">Github</a></p>
-            </div>
-            <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/LY_Mickael.JPG" alt="">
-                <h3>LY Mickaël</h3>
-                <p><a href="https://github.com/astcort">Github</a></p>
-            </div>
-            <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/STOFFEL_Mathieu.jpg" alt="">
-                <h3>STOFFEL Mathieu</h3>
-                <p><a href="https://github.com/matsKNY">Github</a></p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-        <h2>Our teachers</h2>
-        <div class="row teachers">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/DELAME_Thomas.jpg" alt="">
-                <h3>DELAME Thomas</h3>
-                <p><a href="http://virtual-atom.com/">Website</a></p>
-            </div>
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-3">
-                <img class="img-circle img-responsive img-center" src="ressources/images/MANTEAUX_Pierre_Luc.jpg" alt="">
-                <h3>MANTEAUX Pierre-Luc</h3>
-                <p><a href="http://manteapi.github.io/">Website</a></p>
-            </div>
-            <div class="col-sm-2">
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>With the support of Ensimag</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-
+        <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
+</nav>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<!-- Image Background Page Header -->
+<!-- Note: The background image is set within the business-casual.css file. -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="tagline">Shutter Island</h1>
+                <h3 class="tagline">The procedural island generator with boids</h3>
+            </div>
+        </div>
+    </div>
+</header>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Page Content -->
+<div class="container">
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>The project</h2>
+            <p>This project is a end school project for the second year in Ensimag (Grenoble, France). Our team (presented below) choosed to tackle the problem of procedural generation and the swarm simulation. Our goal was to have a programm coded in C++/OpenGL able to generate a realistic island with animals living on it.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Useful links</h2>
+            <ul>
+                <li><a href="https://github.com/Shutter-Island-Team/Shutter-island">Github link</a></li>
+                <li><a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me">Original Presentation on the french wiki of the school</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
 
-    <!-- Processing integration -->
-    <script src="ressources/processing_files/processing-1.4.8.min.js"></script>
+    <hr>
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Shaping the world</h2>
+            <p>For each instance of the programm, a new island is procedurally generate. The generation is processed in several steps : geometry, geography then height map. The rendering of the island uses also several technics : tesselation, texturing, water handeling, ...</p>
+            <p>
+                <img src="ressources/images/Shutter_Island_Primal_map.png" class="img-responsive center-block">
+            </p>
+            <p>
+                <strong>TAG</strong> : Rendering, Voronoi, Tesselation, Height Map, Perlin noise, Level of detail, Texture filtering ...
+            </p>
+            <p>
+                <a class="btn btn-default btn-lg" href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#G.C3.A9n.C3.A9ration_de_terrain">Learn more »</a>
+            </p>
+        </div>
+    </div>
+    <!-- /.row -->
 
-        ga('create', 'UA-81497053-1', 'auto');
-        ga('send', 'pageview');
+    <hr>
 
-    </script>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Bringing life to the world</h2>
+            <p>The island contains different type of species living, interacting, being born and dying. The boid logic combined with a graph deciding the state of the animal has been adopted for this project.</p>
+            <canvas class="img-responsive center-block" data-processing-sources="ressources/processing_files/flock.pde"></canvas>
+            <p class="text-center"><em>The boids here have the flocking behavior. It is currently running in real time on your machine!</em></p>
+            <p>
+                <strong>TAG</strong> : AI, Autonomous agent, Boids, Finite-state machine...
+            </p>
+            <p>
+                <a class="btn btn-default btn-lg" href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me#Gestion_du_comportement_des_animaux">Learn more »</a>
+            </p>
 
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+    <h2>The team</h2>
+    <div class="row team">
+        <div class="col-md-3">
+            <img class="img-circle img-responsive img-center" src="ressources/images/HAMMEN_Maxence.png" alt="">
+            <h3>HAMMEN Maxence</h3>
+            <p><a href="https://github.com/hammenm/">Github</a></p>
+        </div>
+        <div class="col-md-3">
+            <img class="img-circle img-responsive img-center" src="ressources/images/KACHER_Ilyes.png" alt="">
+            <h3>KACHER Ilyes</h3>
+            <p><a href="https://github.com/IlyesKacher">Github</a></p>
+        </div>
+        <div class="col-md-3">
+            <img class="img-circle img-responsive img-center" src="ressources/images/LY_Mickael.JPG" alt="">
+            <h3>LY Mickaël</h3>
+            <p><a href="https://github.com/astcort">Github</a></p>
+        </div>
+        <div class="col-md-3">
+            <img class="img-circle img-responsive img-center" src="ressources/images/STOFFEL_Mathieu.jpg" alt="">
+            <h3>STOFFEL Mathieu</h3>
+            <p><a href="https://github.com/matsKNY">Github</a></p>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+    <h2>Our teachers</h2>
+    <div class="row teachers">
+        <div class="col-xs-3 col-xs-offset-2">
+            <img class="img-circle img-responsive img-center" src="ressources/images/blank-profile-picture.png" alt="">
+            <h3>DELAME Thomas</h3>
+            <p><a href="http://virtual-atom.com/">Website</a></p>
+        </div>
+        <div class="col-xs-3 col-xs-offset-2">
+            <img class="img-circle img-responsive img-center" src="ressources/images/blank-profile-picture.png" alt="">
+            <h3>MANTEAUX Pierre-Luc</h3>
+            <p><a href="http://manteapi.github.io/">Website</a></p>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>With the support of Ensimag</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </footer>
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Processing integration -->
+<script src="ressources/processing_files/processing-1.4.8.min.js"></script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81497053-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
 </body>
-
 </html>

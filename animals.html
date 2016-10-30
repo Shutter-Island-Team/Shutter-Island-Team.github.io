@@ -37,21 +37,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Shutter-Island</a>
+            <a class="navbar-brand" href="index.html">Shutter-Island</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Subsection<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project description<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="terrain.html">The terrain</a></li>
-                        <li><a href="animals.html">The animals</a></li>
+                        <li><a href="terrain.html">Terrain generation</a></li>
+                        <li><a href="animals.html">Animals behaviour</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="https://github.com/Shutter-Island-Team/Shutter-island">Github Page</a>
                 </li>
                 <li>
                     <a href="contact.html">Contact</a>
                 </li>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -63,10 +67,163 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <p>As you can see, the page is currently under development. You can check out the <a href="https://ensiwiki.ensimag.fr/index.php/Projet_image_2016_:_G%C3%A9n%C3%A9ration_d%27un_%C3%A9cosyst%C3%A8me">french web page in our school wiki</a> if you are in a rush to understand what this project is all about.</p>
+            <h1>Animal behavior</h1>
+            <hr>
+            <h2>Boids simulation</h2>
+            <p>
+                La gestion de la faune et la flore a été réalisée en utilisant des boids. Un boid est un agent autonome conscient de son environnement qui se déplace à l'aide de forces qui lui sont appliquées.
+                Voici un exemple de boid pour le déplacement de groupe :
+            </p>
+            <canvas class="img-responsive center-block" data-processing-sources="ressources/processing_files/flock.pde"></canvas>
+            <p>
+                Afin d'améliorer le comportement des boids un automate d'état a été ajouté ainsi que des variables d'état telles que la faim, la soif et la fatigue. L'automate suivant est une version simplifiée de l'automate implémenté.
+            </p>
+            <img src="ressources/images/800px-IslandGeneratorAutomata.png" class="img-responsive center-block">
+            <p class="text-center"><em>Rabbit mesh</em></p>
         </div>
     </div>
     <!-- /.row -->
+
+    <hr>
+
+    <div class="row">
+        <div class="row-sm-12">
+            <h2>Boid choice</h2>
+            <p>
+                Afin de peupler le monde plusieurs types de boids ont été créés :
+            </p>
+            <ul>
+                <li>
+                    Des boids qui se déplacent : le loup et le lapin
+                </li>
+                <li>
+                    Des boids immobiles : l'arbre et la carotte.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="ressources/images/500px-IslandGeneratorWolfBoid.png" class="img-responsive center-block">
+            <p class="text-center"><em>Wolf mesh</em></p>
+        </div>
+        <div class="col-sm-6">
+            <img src="ressources/images/IslandGeneratorRabbitBoid.jpg" class="img-responsive center-block">
+            <p class="text-center"><em>Rabbit mesh</em></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="ressources/images/500px-IslandGeneratorTreeBoid.png" class="img-responsive center-block">
+            <p class="text-center"><em>Tree mesh</em></p>
+        </div>
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorCarrotBoid.png" class="img-responsive center-block">
+            <p class="text-center"><em>Carrot mesh</em></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p>
+                Les arbres et les carottes ont été implémentés en utilisant des boids afin de pouvoir gérer pour chaque entité une zone de séparation différente. Ainsi un animal reste éloigné d'un arbre comme il le serait avec un autre animal afin de ne pas lui rentrer dedans.
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Boid behavior</h2>
+            <p>
+                Voici une liste non exhaustives de comportements associé aux différents boids :
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorGroupBehaviour.png" class="img-responsive center-block">
+            <p class="text-center"><em>Tree mesh</em></p>
+        </div>
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorCollisionAvoidance.png" class="img-responsive center-block">
+            <p class="text-center"><em>Carrot mesh</em></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorEatCarrot.png" class="img-responsive center-block">
+            <p class="text-center"><em>Tree mesh</em></p>
+        </div>
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorFlee.png" class="img-responsive center-block">
+            <p class="text-center"><em>Carrot mesh</em></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorWolfAttack.png" class="img-responsive center-block">
+            <p class="text-center"><em>Tree mesh</em></p>
+        </div>
+        <div class="col-sm-6">
+            <img src="ressources/images/600px-IslandGeneratorDrinkNearLake.png" class="img-responsive center-block">
+            <p class="text-center"><em>Carrot mesh</em></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Real time computing</h2>
+            <p>
+                Optimisations réalisées :
+            </p>
+            <ul>
+                <li>
+                    Parallélisation du calcul de la position des boids
+                </li>
+                <li>
+                    Envoi simultané des données à la carte graphique
+                </li>
+                <li>
+                    Parcours des boids à l'aide de d'une grille
+                </li>
+            </ul>
+            <p>
+                Il est possible d'afficher plus 1000 boids simultanément à 60 fps (test réalisé sur une machine à l'Ensimag en E303).
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Environment-Animal interactions</h2>
+            <p>
+                Les animaux obéissent selon différents comportements comme par exemple :
+
+            </p>
+            <ul>
+                <li>
+                    Se situer à la bonne altitude
+                </li>
+                <li>
+                    Connaître la position des lacs pour y boire et ne pas rentrer dedans
+                </li>
+                <li>
+                    Ne pas sortir des terres
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <hr>
 
@@ -85,6 +242,9 @@
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
+
+<!-- Processing integration -->
+<script src="ressources/processing_files/processing-1.4.8.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
