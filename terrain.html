@@ -72,169 +72,245 @@
             <h2>Map generation</h2>
             <h3>Geometry</h3>
             <p>
-                La première étape est de segmenter la carte afin de définir plusieurs régions homogènes.
+	     The first step is to divide the map into homongeneous areas.  	
             </p>
             <p>
-                Pour effectuer un découpage géométrique qui n'apparaisse pas de manière flagrante aux yeux d'un observateur, une bonne façon de faire est de construire un diagramme de Voronoi. En configurant de manière correcte les seeds de départ, la construction du diagramme permet d'obtenir une subdivision peu ou prou uniforme de la carte selon une géométrie complexe.
+	      To make the division look not too obvious at the first
+                  glance, a good way is to built a Voronoi diagram. If
+                  we correctly choose the seeds of the diagram (like
+                  in the project with controlled Gaussian draws), the
+                  division pattern will not be too visible.
             </p>
             <img src="ressources/images/600px-Shutter_Island_Map1.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Example of Voronoi Diagram we
+            can create</em></p>
 
             <h3>Geography</h3>
             <p>
-                Une fois la géométrie de la carte définie, il reste maintenant à affecter à chaque cellule du diagramme de Voronoi un environnement (un Biome).
+	      Once the geometry of the map has been computed, the next
+                step is to assign to each cell a climate area -
+                referred to the name of <i> Biome </i> in the following.
             </p>
             <p>
-                La carte obtenue doit cependant apparaître cohérente. Pour ce faire, on construit les règles de génération de sorte à ce que la carte induite puisse être vue comme celle d'un environnement vraisemblable. Les règles utilisées sont dans les grandes lignes :
+	      However, the outcoming map must look coherent. To do so,
+                we define some basic rules for the assignation that
+                should result in a map that looks plausible. The rules
+                used are approximately the followings :
             </p>
             <ul>
-                <li>
-                    Les bords de la carte sont de la mer (nous nous sommes limités à une île)
+              <li>
+	       The cells that are on the edge of the map are
+                    necessarily of type <i>Sea</i>, as we are supposed
+                    to be on an island.
                 </li>
                 <li>
-                    Le centre de la carte est préférentiellement de la terre
+                    The center of the map is very likely to be of
+                    type <i> Land </i>, with a decreasing probability
+                    as we get closer to the edges.
                 </li>
                 <li>
-                    La terre jouxtant la mer est du sable
+                    The <i> Land </i> neighbouring the <i>Sea</i> gets
+                    the subtype <i>Sand</i>.
                 </li>
                 <li>
-                    L'intérieur de l'île peut contenir des lacs et des montagnes.
+                    A <i> Land </i> can turn into a <i>Mountain</i> or
+                    a <i>Lake</i>.
                 </li>
             </ul>
             <p>
-                La diagramme précédent devient donc la carte suivante, avec les correspondances couleur suivantes :
+                The previous Voronoi diagram can, with these rules,
+                turn into the following map. The legend is :
             </p>
             <ul>
                 <li>
-                    Bleu foncé : Mer
+                    Dark blue: Sea
                 </li>
                 <li>
-                    Jaune: Sable
+                    Yellow: Sand
                 </li>
                 <li>
-                    Vert: Plaines
+                    Green: Lands
                 </li>
                 <li>
-                    Bleu clair: Lac
+                    Light blue: Lake
                 </li>
                 <li>
-                    Rouge: Montagne
+                    Red: Mountain
                 </li>
             </ul>
 
             <img src="ressources/images/600px-Shutter_Island_Map2.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Biome affectation</em></p>
 
             <h3>Height Map</h3>
             <p>
-                Pour la génération de la carte, on ne peut pas, comme dans certaines approches naïves de génération de carte topographique (Height Map) se contenter d'un simple bruit cohérent (Par exemple le bruit de Perlin). En effet, bien que le bruit cohérent permette d'obtenir un relief continu, on ne peut pas contrôler la forme du bruit généré, et donc s'assurer que le relief généré correspond à la carte précédement générée.
+	   For the map rendering, we cannot, like in other methods,
+                create the height map using a coherent noise (like the
+                Simplex Noise). Indeed, these approach start by
+                computing a height map using the noise, and THEN using
+                some topological rules, compute the biome map. This
+                quite the opposite of the approach we have here, which
+                is to start from a biome map (procedurally computed or
+                drawn by an artist).
             </p>
             <p>
-                On s'inspire cependant de la technique de génération de bruit cohérent que l'on contrôle à l'aide de la carte. (Un lecteur peu familier avec les techniques de génération est invité à se renseigner sur la génération de bruit de Perlin afin de comprendre la suite de cette sous-section).
+	   However, we can try to adapt the coherent noise generation
+                algorithm to generate our own noise that will be
+                controlled using the information of the biome map. <i>The
+                understanding of the rest of this part requires the
+                reader to be familiar with the Perlin noise</i>.
             </p>
             <p>
-                Dans la construction des octaves constituant le bruit, on va contrôler les valeurs du bruits tirées ainsi que l'interpolation sur chaque octave à l'aide de la carte. Par exemple, si le position d'un point au sein d'une octave est dans la mer, sa valeur sera tirée dans une plage de valeurs négatives, alors que si c'est un point correspondant à une plaine, on s'assurera que sa valeur est positive (et petite). On contrôle ensuite la fonction d'interpolation sur l'octave pareillement en fonction de biomes pour prendre en compte leur étendue géographique. Par exemple, une montagne aura une influence très locale, alors qu'une plaine pourra éventuellement s'étendre.
+	     During the construction of each octaves, we are going to
+                control a lot of informations. First we are going to
+                control the range of the noise values that are going
+                to be drawn. For example, a draw that happens on a sea
+                will be drawn in a negative range, while a draw that
+                happens on lands will be drawn in a range of small
+                positive values. Then, the interpolation function will
+                not be the same on the whole grid like in the Perlin
+                noise, but will depend on the biomes to take into
+                account their geometry and their extent. For istance,
+                a mountain will have a limited are, and should have
+                sharp edges whereas lands can expand on large areas
+                and will be smooth.
             </p>
             <p>
                 Octave 1:
             </p>
             <img src="ressources/images/Shutter_Island_Heighttree1.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Octave 1</em></p>
             <p>
                 Octave 2:
             </p>
             <img src="ressources/images/Shutter_Island_Heighttree2.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Octave 2</em></p>
             <p>
                 ...
             </p>
             <p>
-                Ceci nous permet d'obtenir un bruit cohérent et en accord avec la carte sous-jacente. Les résultats de ce calcul de Height Map peuvent être visibles dans les captures d'écran de la partie Rendu.
+                The outcoming noise is thus coherent with the biome
+                map. The results of this step can ben view in the
+                following section.
             </p>
 
             <hr>
 
-            <h2>Rendu du terrain</h2>
-            <h3>Rendu primaire</h3>
+            <h2>Terrain rendering</h2>
+            <h3>Basic rendering</h3>
             <p>
-                Cette première version de l'île correspond à une élévation simple de la carte selon les hauteurs diagrammes de Voronoi triangularisés de manière grossière.
+	      This first version of the island simply corresponds to
+                the application of the height map on the Voronoi diagram.
             </p>
             <p>
-                Le plan orange délimite le niveau de la mer.
+               The orange plane represents the sea level.
             </p>
             <img src="ressources/images/Shutter_Island_Primal_map.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Basic rendering</em></p>
 
-            <h3>Tessellation et Levels of Details</h3>
+            <h3>Tessellation and Levels of Details</h3>
             <p>
-                La "Tessellation", ou "maillage" dans la langue de Vercingétorix, consiste en la construction d'un ensemble de triangle pour représenter le contour d'un objet tridimensionnel. Cette étape est particulièrement importante dans le monde de l'informatique graphique car les principales primitives graphiques permettent d'afficher des triangles (aussi bien sous OpenGL que sous CUDA).
+	      The <i>Tessellation</i> process simply consists in
+                transforming an object into a mesh that is composed of
+                polygons. Re-tessellating a mesh by increasing the
+                number of polygons (triangles here) can improve the
+              rendering quality.
             </p>
             <p>
-                La dernière version d'OpenGl, à savoir OpenGL4, apporte de multiples améliorations et extensions, dont les "Tessellation Shaders". Ces derniers permettent de déporter le calcul du maillage d'un objet en trois dimensions vers la carte graphique (GPU). Cela permet de gagner en performance, et les primitives offertes permettent de "déléguer" ledit calcul à un algorithme inclus dans OpenGL4.
+	    In <i>OpenGL4</i>, the <i>Tessellation Shaders</i> provide
+                a quite 'simple' control on the tessellation
+                level. Thanks to these shaders, we can decide for each
+                basic triangle in how many sub-triangles it will be
+                divided for the rendering.
             </p>
             <p>
-                Ainsi, grâce à l'implémentation de "Tessellation Shaders", notre maillage est raffiné (chaque triangle issu de la triangulation primaire du diagramme de Voronoi est subdivisé en plusieurs dizaines, voire centaines, de triangles). Cela permet d'obtenir une carte tridimensionnelle infiniment plus détaillée, et de lui appliquer une carte des hauteurs échantillonnée avec une grande précision. Le monde tridimensionnel généré tend vers le réalisme par le biais de la topographie détaillée obtenue par le biais du raffinement du maillage.
-            </p>
-            <p>
-                Ci-dessous, on peut voir le raffinement du maillage par incrémentation du coefficient de "Tessellation". Plus ce coefficient est important, plus les triangles initiaux sont subdivisés, et plus la carte gagne en détails.
+                Below is a short animation showing how increasing the
+                tessellation can affect the quality of the rendering.
             </p>
             <img src="ressources/images/600px-Shutter_Island_Tessellation_Factor.gif" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Map rendering at different
+            tessellation levels</em></p>
 
             <p>
-                Un autre avantage des "Tessellation Shaders" est qu'ils permettent de gérer le "Level of Details" (Niveau de Détails) sur le GPU. En quelques mots, la gestion du "LoD" consiste à adapter le raffinement du maillage d'un objet tridimensionnel en fonction de la distance à la "caméra" (le point de l'espace à partir duquel la scène est dessinée et rendue) de ce dernier.
-            </p>
-            <p>
-                Un exemple sera sûrement plus parlant. Considérons le lapin ci-dessous, ou plutôt les différents rendus de ce même lapin.
+	      However, it is quite obvious that the tessellation level
+	      is not a constant on the whole scene. For example, take
+	      a look at the rabbit below. The ultra-tessellated
+	      version on the left is perfect for a close-up, but is
+	      horribly expensive and useless if the rabbit is far from
+	      the camera. In this last case, we should better use the
+	      ultra-low polygon version on the right.
             </p>
             <img src="ressources/images/600px-Shutter_Island_LoD.jpg" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Rabbit mesh with different
+            tessellation levels</em></p>
 
             <p>
-                Selon le degré de raffinement (en d'autres termes le nombre de triangles du maillage) utilisé lors du dessin du dit léporidé, il est plus ou moins détaillé. L'idée centrale est d'utiliser la version très détaillée lorsque notre petit mangeur de carottes est au premier plan de la scène, et la version "cubique" (ou Picassienne) lorsqu'il est en arrière-plan. Cela n'aura que peu d'impact pour l'utilisateur, qui, vraisemblablement, ne focalisera pas son attention sur un détail de l'arrière-plan. Néanmoins, un maillage moins détaillé implique un temps de calcul moindre (ici, on passe de presque 70000 triangles à à peine 80...), ce qui augmente la fluidité et la rapidité d'exécution du programme (objectif "60FPS").
+                The idea is - still in the tessellation shader - to
+                compute for each triangle the <i>Level of Detail</i>
+                it needs to be represented. This value may depend on
+                the geometry of the triangle (equilateral or thin),
+                its size, its distance to the camera etc. The higher
+                this level of detail is, the more the triangle will be
+                tessellated. 
             </p>
             <p>
-                On peut voir l'impact de la gestion du "LoD" sur le monde tridimensionnel généré : plus on se rapproche du "cratère" (un lac en devenir), plus ce dernier est détaillé et lissé.
+                We can see in the animation below that the edges of
+                the lake we are zooming on are progressively becoming
+                smoother.
             </p>
             <img src="ressources/images/600px-Shutter_Island_Tessellation.gif" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Map rendering with different
+            levels of detail</em></p>
 
-            <h3>Texturisation</h3>
+            <h3>Texturization</h3>
             <p>
-                Malgré le fait que la résolution ait été augmentée par la Tessellation, la frontière des biomes est toujours définie par le diagramme de Voronoi.
+	    Even if the resolution has been increased by the
+                tessellation process, the borders of the biomes are
+                still defined by the edges of the Voronoi cells.
             </p>
             <p>
-                Il faut donc visuellement cacher ces lignes droites qui limitent les diagrammes de Voronoi au niveau du rendu en effectuant un mélange (blending) de textures de sorte à avoir des transitions continues d'un biome à l'autre.
+	   In the rendering, we have to hide these straight lines. To
+                do so, we simply blend the texture on these edges to
+                get smooth transitions from one biome to another.
             </p>
             <p>
-                Pour ce faire, on calcule, en plus de la Height Map une Texture Map. Celle-ci contient les informations nécessaires au blending de texture en chaque point sous la forme d'un ensemble de coefficients qui indiquera en un ensemble de points échantillonnés quelle proportion de quelle texture appliquer.
+	      This is done through a texture map. This map will store
+                for a set of sampled positions the proportions of each
+                texture at the position.
             </p>
             <img src="ressources/images/600px-Shutter_Island_Texture.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Example of texture blending</em></p>
 
-            <h3>Ajout de l'eau</h3>
-            <p>Un point important pour le réalisme de la carte est la gestion des biomes aqueux.</p>
+            <h3>Water rendering</h3>
+            <p>As we are on a island with lakes inside, we also have
+            to render the water planes.</p>
 
-            <h4>Ajout de la mer</h4>
+            <h4>Sea rendering</h4>
             <p>
-                La mer est simplement définie par un plan texturé à côte 0. Outre la simplicité d'implémentation, cela donne aux boids un critère pour connaître la présence de la mer puisque cette dernière n'est visible que lorsque la côte du terrain devient négative.
+	    The sea is simply defined by a textured plane at the
+                alitude 0.
             </p>
-            <h4>Ajout des lacs</h4>
+            <h4>Lake Rendering</h4>
             <p>
-                L'ajout des lacs passe par le calcul des composantes connexes parmi l'ensemble des biomes de type Lac. Ensuite, pour chaque composante connexe, on calcule la hauteur moyenne du lac, ce qui permet, à l'aide de l'information de la taille des cellules de Voronoi sous-jacentes, d'ajouter un lac aux bonnes dimensions.
+	      Rendering lakes is a bit more tricky as we have to
+                compute connected lake components. This then enable us
+                to compute the altitude of the lake and render a
+                proper water plane.
             </p>
             <img src="ressources/images/600px-Shutter_Island_Lake.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Lake rendering</em></p>
 
             <img src="ressources/images/600px-Shutter_Island_Water.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Sea rendering</em></p>
 
-            <h4>Rendu final du terrain</h4>
+            <h3>Final rendering</h3>
             <p>
-                L'ajout d'une skybox à la carte obtenue tout au long des différentes transformations précédemment décrites aboutit au rendu suivant :
+	      To finish this not-so-bad rendering, we simply have to
+                add a skybox around our island, which can lead to
+                results as the following picture.
             </p>
             <img src="ressources/images/600px-Shutter_Island_Skybox.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Example of map rendering</em></p>
 
         </div>
     </div>
