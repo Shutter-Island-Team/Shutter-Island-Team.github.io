@@ -71,15 +71,15 @@
             <hr>
             <h2>Boids simulation</h2>
             <p>
-                La gestion de la faune et la flore a été réalisée en utilisant des boids. Un boid est un agent autonome conscient de son environnement qui se déplace à l'aide de forces qui lui sont appliquées.
-                Voici un exemple de boid pour le déplacement de groupe :
+                The ecosystem of this project use the boid technique. A boid is an autonomous agent who is aware of its environment and move considering the steering force applied to it. Here is an example of boids which are moving as a group.
             </p>
             <canvas class="img-responsive center-block" data-processing-sources="ressources/processing_files/flock.pde"></canvas>
+            <p class="text-center"><em>Simple boid system. This simulation is computed live on your browser.</em></p>
             <p>
-                Afin d'améliorer le comportement des boids un automate d'état a été ajouté ainsi que des variables d'état telles que la faim, la soif et la fatigue. L'automate suivant est une version simplifiée de l'automate implémenté.
+                To improve the behavior of the boids, we used an automaton which indicate the transitions between the different states of the boid. We also used some state variables which indicate if a boid is hungry, thirsty or tired. The following automaton represent a simplified version of the automaton used in this project.
             </p>
             <img src="ressources/images/800px-IslandGeneratorAutomata.png" class="img-responsive center-block">
-            <p class="text-center"><em>Rabbit mesh</em></p>
+            <p class="text-center"><em>Boid state automaton</em></p>
         </div>
     </div>
     <!-- /.row -->
@@ -90,14 +90,14 @@
         <div class="row-sm-12">
             <h2>Boid choice</h2>
             <p>
-                Afin de peupler le monde plusieurs types de boids ont été créés :
+                In order to populate the world, two type of boids were used
             </p>
             <ul>
                 <li>
-                    Des boids qui se déplacent : le loup et le lapin
+                    Some living boid which are mobile : The wolf and the rabbit
                 </li>
                 <li>
-                    Des boids immobiles : l'arbre et la carotte.
+                    Some immobile boids : The tree and the carrot.
                 </li>
             </ul>
         </div>
@@ -128,7 +128,7 @@
     <div class="row">
         <div class="col-sm-12">
             <p>
-                Les arbres et les carottes ont été implémentés en utilisant des boids afin de pouvoir gérer pour chaque entité une zone de séparation différente. Ainsi un animal reste éloigné d'un arbre comme il le serait avec un autre animal afin de ne pas lui rentrer dedans.
+                Trees and carrots were considered here as boid to handle the relations between them and the others moving boids. We could therefore for example use a delimitation zone to avoid the collision between the boids and the environmental elements. It is the same rule which indicate why two animals do not intersect and why a living boid do not touch an environmental element.
             </p>
         </div>
     </div>
@@ -139,7 +139,7 @@
         <div class="col-sm-12">
             <h2>Boid behavior</h2>
             <p>
-                Voici une liste non exhaustives de comportements associé aux différents boids :
+                Here is non exhaustive list of the behavior implemented in this project :
             </p>
         </div>
     </div>
@@ -147,33 +147,33 @@
     <div class="row">
         <div class="col-sm-6">
             <img src="ressources/images/600px-IslandGeneratorGroupBehaviour.png" class="img-responsive center-block">
-            <p class="text-center"><em>Tree mesh</em></p>
+            <p class="text-center"><em>The pack of wolfs follows the leader</em></p>
         </div>
         <div class="col-sm-6">
             <img src="ressources/images/600px-IslandGeneratorCollisionAvoidance.png" class="img-responsive center-block">
-            <p class="text-center"><em>Carrot mesh</em></p>
+            <p class="text-center"><em>The pack of wolf do not collide with the trees and keep following the leader</em></p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
             <img src="ressources/images/600px-IslandGeneratorEatCarrot.png" class="img-responsive center-block">
-            <p class="text-center"><em>Tree mesh</em></p>
+            <p class="text-center"><em>Two rabbits are eating a carrot</em></p>
         </div>
         <div class="col-sm-6">
             <img src="ressources/images/600px-IslandGeneratorFlee.png" class="img-responsive center-block">
-            <p class="text-center"><em>Carrot mesh</em></p>
+            <p class="text-center"><em>The rabbits see the wolf and flee from it</em></p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
             <img src="ressources/images/600px-IslandGeneratorWolfAttack.png" class="img-responsive center-block">
-            <p class="text-center"><em>Tree mesh</em></p>
+            <p class="text-center"><em>The wolf is hungry and chase some rabbits</em></p>
         </div>
         <div class="col-sm-6">
             <img src="ressources/images/600px-IslandGeneratorDrinkNearLake.png" class="img-responsive center-block">
-            <p class="text-center"><em>Carrot mesh</em></p>
+            <p class="text-center"><em>The wolfs are thirsty and drink at the lake</em></p>
         </div>
     </div>
 
@@ -183,21 +183,21 @@
         <div class="col-sm-12">
             <h2>Real time computing</h2>
             <p>
-                Optimisations réalisées :
+                One concern of this project was to make it run in real time. Here are some optimisations we made to improve the speed of the program.
             </p>
             <ul>
                 <li>
-                    Parallélisation du calcul de la position des boids
+                    Parallel computing of the positions of the boids
                 </li>
                 <li>
-                    Envoi simultané des données à la carte graphique
+                    Sending simultaneously multiple data to the GPU.
                 </li>
                 <li>
-                    Parcours des boids à l'aide de d'une grille
+                    Division of the map into a grid to restrict the number of interact between boids on each other.
                 </li>
             </ul>
             <p>
-                Il est possible d'afficher plus 1000 boids simultanément à 60 fps (test réalisé sur une machine à l'Ensimag en E303).
+                In the end, it was possible to run the program with around 1000 boids on a standard machine at 60 fps.
             </p>
         </div>
     </div>
@@ -208,18 +208,17 @@
         <div class="col-sm-12">
             <h2>Environment-Animal interactions</h2>
             <p>
-                Les animaux obéissent selon différents comportements comme par exemple :
-
+                The boids also interact with the environment. For example :
             </p>
             <ul>
                 <li>
-                    Se situer à la bonne altitude
+                    The boid's position is at the corresponding height of the map.
                 </li>
                 <li>
-                    Connaître la position des lacs pour y boire et ne pas rentrer dedans
+                    The boids remember where the lakes are and are careful not to drown in them.
                 </li>
                 <li>
-                    Ne pas sortir des terres
+                    The boids do not venture over the oceans.
                 </li>
             </ul>
         </div>
